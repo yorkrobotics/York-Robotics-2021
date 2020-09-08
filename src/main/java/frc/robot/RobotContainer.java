@@ -9,6 +9,7 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -26,6 +27,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.DriveRunCommand;
 import frc.robot.commands.SpinColorWheel;
+import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -42,6 +44,8 @@ public class RobotContainer {
   private final TurretWheels tWheel = new TurretWheels();
   TalonSRX colorTalon = new TalonSRX(4);
   
+  //Testing Pneumatics
+  DoubleSolenoid testSolenoid = new DoubleSolenoid(0,7);
 
 
   //private final VictorDrive m_victorDrive = new VictorDrive(m_victorMotor);
@@ -87,11 +91,14 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
    
-    new JoystickButton(controller_1, Button.kBumperLeft.value)
-     .whenPressed(new SpinColorWheel(colorTalon));
+    // new JoystickButton(controller_1, Button.kBumperLeft.value)
+    //  .whenPressed(new SpinColorWheel(colorTalon));
 //    new JoystickButton(controller_1, Button.kBumperRight.value)
 //     .whenPressed(new AlignToColor(colorWheelMotor));
-    
+    new JoystickButton(controller_1, Button.kX.value)
+    .whenPressed(()->{testSolenoid.set(kForward);});
+    new JoystickButton(controller_1, Button.kA.value)
+    .whenPressed(()->{testSolenoid.set(kReverse);});
 /*
     new JoystickButton(controller_1, Button.kA.value)
     .whenPressed(new SpinFeed(feed, tWheel, .9))
