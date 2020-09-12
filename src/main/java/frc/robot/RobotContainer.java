@@ -45,7 +45,7 @@ public class RobotContainer {
   TalonSRX colorTalon = new TalonSRX(4);
   
   //Testing Pneumatics
-  DoubleSolenoid testSolenoid = new DoubleSolenoid(0,7);
+  DoubleSolenoid testSolenoid = new DoubleSolenoid(2,5);
 
 
   //private final VictorDrive m_victorDrive = new VictorDrive(m_victorMotor);
@@ -103,9 +103,11 @@ public class RobotContainer {
     new JoystickButton(controller_1, Button.kA.value)
     .whenPressed(new SpinFeed(feed, tWheel, .9))
     .whenReleased(new SpinFeed(feed, tWheel, 0));
+*/
     new JoystickButton(controller_1, Button.kB.value)
     .whenPressed(new SpinFeed(feed, tWheel, .8))
     .whenReleased(new SpinFeed(feed, tWheel, 0));
+/*
     new JoystickButton(controller_1, Button.kY.value)
     .whenPressed(new SpinFeed(feed, tWheel, .7))
     .whenReleased(new SpinFeed(feed, tWheel, 0));
