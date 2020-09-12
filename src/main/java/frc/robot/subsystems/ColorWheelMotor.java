@@ -18,14 +18,9 @@ import static frc.robot.Constants.*;
 public class ColorWheelMotor extends SubsystemBase {
   TalonSRX greenWheel = new TalonSRX(4);
   //VictorSPX greenWheel = new VictorSPX(6);
-  /**
-   * Creates a new ColorWheelSpinner.
-   */
-  
 
   public ColorWheelMotor() {
-    
-
+  
   }
 
   @Override
