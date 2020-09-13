@@ -46,7 +46,7 @@ public class RobotContainer {
   
   //Testing Pneumatics
   DoubleSolenoid testSolenoid = new DoubleSolenoid(2,5);
-
+  DoubleSolenoid testSolenoid2 = new DoubleSolenoid(0,7);
 
   //private final VictorDrive m_victorDrive = new VictorDrive(m_victorMotor);
 
@@ -95,10 +95,24 @@ public class RobotContainer {
     //  .whenPressed(new SpinColorWheel(colorTalon));
 //    new JoystickButton(controller_1, Button.kBumperRight.value)
 //     .whenPressed(new AlignToColor(colorWheelMotor));
-    new JoystickButton(controller_1, Button.kX.value)
-    .whenPressed(()->{testSolenoid.set(kForward);});
-    new JoystickButton(controller_1, Button.kA.value)
-    .whenPressed(()->{testSolenoid.set(kReverse);});
+
+    //Pneumatics
+    //Toggle B
+    Boolean[] forward = {true};
+    DoubleSolenoid.Value direction = forward[0] ? kForward : kReverse;
+    new JoystickButton(controller_1, Button.kB.value)
+    .whenPressed(()->{
+      testSolenoid.set(direction);
+    })
+    .whenReleased(()->{
+      forward[0] = !forward[0];
+    });
+    //RB
+    new JoystickButton(controller_1, Button.kBumperRight.value)
+    .whenPressed(()->{testSolenoid2.set(kForward);});
+    //LB
+    new JoystickButton(controller_1, Button.kBumperLeft.value)
+    .whenPressed(()->{testSolenoid2.set(kReverse);});
 /*
     new JoystickButton(controller_1, Button.kA.value)
     .whenPressed(new SpinFeed(feed, tWheel, .9))
